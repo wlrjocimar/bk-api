@@ -15,8 +15,8 @@ jobs:
         with:
           host: 143.198.52.40
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.PASSWORD }}
 
       - name: Pull from Repository
         run: |
-          ssh ${{ secrets.USERNAME }}@143.198.52.40 "cd /dados/webapps"
+          ssh ${{ secrets.USERNAME }}@143.198.52.40 "cd /dados/webapps && git pull"
