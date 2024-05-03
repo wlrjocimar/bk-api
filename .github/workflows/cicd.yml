@@ -19,6 +19,6 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          cd  /data
+          cd  /
           ls -a
           
