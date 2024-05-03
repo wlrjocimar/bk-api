@@ -19,5 +19,4 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          cd /
-          
+          ssh ${{ secrets.USERNAME }}@143.198.52.40 "cd /dados/webapps"
