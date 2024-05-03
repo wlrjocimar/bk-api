@@ -19,5 +19,5 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          cd /dados/webapps
-          git pull origin main
+          cd /root/dados/webapps
+          
