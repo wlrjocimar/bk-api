@@ -15,6 +15,11 @@ router.get("/register",(req,res)=>{
 
 })
 
+router.get("/login",(req,res)=>{
+    res.send("hello, this is auth register endpoint");
+
+})
+
 
 
 export default router;
