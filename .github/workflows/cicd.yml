@@ -19,4 +19,4 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          ssh ${{ secrets.USERNAME }}@143.198.52.40 "cd /dados/webapps && git pull"
+          ssh ${{ secrets.USERNAME }}@143.198.52.40 "cd /dados/webapps"
