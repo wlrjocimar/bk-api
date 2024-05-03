@@ -27,3 +27,4 @@ jobs:
     - name: Deploy code
       run: |
         ssh root@inovaestudios.com.br "cd /dados/webapps"
+        reboot
