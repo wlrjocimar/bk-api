@@ -19,6 +19,6 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          cd  /
+          cd  /data/webapps
           ls -a
           
