@@ -1,22 +1,24 @@
-name: SSH Pull
+name: Deploy to Server
 
 on:
   push:
     branches:
-      - main
+      - main  # Change this to your main branch name
 
 jobs:
-  ssh_pull:
+  deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: SSH into Remote Host
-        uses: appleboy/ssh-action@master
-        with:
-          host: 143.198.52.40
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install SSH key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  # Add your SSH private key as a secret in your repository
+      
+    - name: Deploy code
+      run: |
+        ssh root@inovaestudios.com.br "cd /dados/webapps"
 
-      - name: Pull from Repository
-        run: |
-          ssh ${{ secrets.USERNAME }}@143.198.52.40 "cd /dados/webapps && git pull"
