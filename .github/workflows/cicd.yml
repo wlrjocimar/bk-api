@@ -19,7 +19,7 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          cd  /
+          cd  /dados
           sudo su
           ls
           lsb_release -a
