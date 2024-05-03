@@ -1,0 +1,23 @@
+name: SSH Pull
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ssh_pull:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into Remote Host
+        uses: appleboy/ssh-action@master
+        with:
+          host: 143.198.52.40
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Pull from Repository
+        run: |
+          cd /dados/webapps
+          git pull origin main
