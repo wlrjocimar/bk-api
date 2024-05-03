@@ -15,7 +15,7 @@ jobs:
         with:
           host: 143.198.52.40
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Pull from Repository
         run: |
