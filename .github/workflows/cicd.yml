@@ -19,5 +19,5 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          cd /root/dados/webapps
+          cd  dados/webapps
           
