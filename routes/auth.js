@@ -13,12 +13,14 @@ router.get("/",(req,res)=>{
 router.get("/register",(req,res)=>{
     res.send("hello, this is auth register endpoint");
 
-})
+})  
+
 
 router.get("/login",(req,res)=>{
     res.send("hello, this is auth register endpoint");
 
 })
+
 
 
 
