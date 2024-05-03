@@ -19,8 +19,4 @@ jobs:
 
       - name: Pull from Repository
         run: |
-          cd  /dados
-          sudo su
-          ls
-          lsb_release -a
-
+          ssh ${{ secrets.USERNAME }}@143.198.52.40 "cd /dados/webapps && git pull"
