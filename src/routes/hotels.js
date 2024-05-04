@@ -8,9 +8,10 @@ const router = express.Router();
 //CREATE
 router.post("/",async (req,res)=>{
 const newHotel = new Hotel(req.body)
+console.log(newHotel);
 
     try {
-        const savedHotel = newHotel.save();
+        const savedHotel = await newHotel.save();
         res.status(200).json(savedHotel);
     } catch (error) {
         res.status(500).json(error)
