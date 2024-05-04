@@ -1,7 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import authRoute from "./routes/auth.js";
+import authRoute from "./src/routes/auth.js";
+
+import hotelsRoute from "./src/routes/hotels.js";
+
 
 const basePath = '/bk-api';
 const app = express();
@@ -22,6 +25,9 @@ mongoose.connection.on("disconnected", () => {
 
 // Middleware
 app.use(basePath + "/auth", authRoute);
+
+app.use(basePath + "/hotels", hotelsRoute);
+
 
 app.listen(8800, () => {
   connect();
