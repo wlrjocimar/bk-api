@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get("/",(req,res)=>{
-    res.send("hello, this is auth endpoint");
+    res.send("hello, this is auth endpoint new");
 
 })
 
