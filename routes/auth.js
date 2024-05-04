@@ -20,7 +20,7 @@ router.get("/register",(req,res)=>{
 
 
 router.get("/login",(req,res)=>{
-    res.send("hello, this is auth register endpoint");
+    res.send("hello, this is login register endpoint");
 
 })
 
