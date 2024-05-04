@@ -1,40 +1,29 @@
-import express from "express"
-import dotenv from "dotenv"
-import mongoose from "mongoose"
-import authRoute from "./routes/auth.js"
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import authRoute from "./routes/auth.js";
 
-
+const basePath = '/bk-api';
 const app = express();
-dotenv.config()
+dotenv.config();
 
-
-const connect  = async ()=>{
+const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO)
-    console.log("connected to mongoDB.")
+    await mongoose.connect(process.env.MONGO);
+    console.log("connected to mongoDB.");
   } catch (error) {
     throw error;
   }
-}
+};
 
+mongoose.connection.on("disconnected", () => {
+  console.log("mongoDB disconnected");
+});
 
-mongoose.connection.on("disconnected",()=>{
-  console.log("mongoDB disconnected")
-})
+// Middleware
+app.use(basePath, authRoute);
 
-
-
-//midleware
-
-app.use("/auth",authRoute)
-
-
-
-
-
-
-
-app.listen(8800,()=>{
-    connect();
-    console.log("Conected to backend");
-})
+app.listen(8800, () => {
+  connect();
+  console.log("Connected to backend");
+});
