@@ -37,7 +37,9 @@ export const verifyUser = (req,res,next)=>{
         if(req.user.id===req.params.id || req.user.isAdmin){
 
             console.log("Passou",req.user.id)
+            
             next();
+
 
         }else{
             console.log("nao passou",req.user.id)
