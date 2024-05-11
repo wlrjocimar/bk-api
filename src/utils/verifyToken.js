@@ -14,10 +14,8 @@ export const verifyToken = (req, res, next) => {
   // Decodificar o token e imprimir os dados
   jwt.verify(token, process.env.JWT, (err, decoded) => {
     if (err) {
-      if (err.name === "TokenExpiredError") {
-        return next(createError(403, "Token expirado"));
-      }
-      return next(createError(403, "Token is not valid"));
+      
+      return next(createError(403, err.message));
     }
 
     console.log("Dados do token do usuario logado:", decoded);
@@ -30,7 +28,7 @@ export const verifyToken = (req, res, next) => {
 };
 
 export const verifyUser = (req, res, next) => {
-  verifyToken(req, res, () => {
+  verifyToken(req, res,next, () => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       console.log("Passou", req.user.id);
 
@@ -45,11 +43,11 @@ export const verifyUser = (req, res, next) => {
 };
 
 export const verifyAdmin = (req, res, next) => {
-  verifyToken(req, res, () => {
+  verifyToken(req, res,next, () => {
     if (req.user.isAdmin) {
       next();
     } else {
-      return next(createError(403, "You are not admin user"));
+      return next(createError(403, "You are not an admin user"));
     }
   });
 };

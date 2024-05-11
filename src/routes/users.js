@@ -30,7 +30,7 @@ router.get("/checkuser/:id",verifyUser,(req,res,next)=>{
 // check if is admin
 
 
-router.get("/checkadmin",verifyAdmin,(req,res,next)=>{
+router.get("/checkadmin/:id",verifyAdmin,(req,res,next)=>{
 
   res.send("Hello user , you are authenticated as an admin user , congratulation!!")
 
