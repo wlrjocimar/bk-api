@@ -2,8 +2,7 @@ import jwt from "jsonwebtoken";
 import { createError } from "./error.js";
 
 
-export const verifyToken = (req,res,next)=>{
-
+export const verifyToken = (req, res, next) => {
     const token = req.cookies.access_token;
 
     console.log("Verificando token");
@@ -14,21 +13,23 @@ export const verifyToken = (req,res,next)=>{
     }
 
     // Decodificar o token e imprimir os dados
-    jwt.verify(token, process.env.JWT, (err, user) => {
+    jwt.verify(token, process.env.JWT, (err, decoded) => {
         if (err) {
+            if (err.name === 'TokenExpiredError') {
+                return next(createError(403, "Token expirado"));
+            }
             return next(createError(403, "Token is not valid"));
         }
-        console.log("Dados do token do usuario logado:", user);
+
+        console.log("Dados do token do usuario logado:", decoded);
         // Você pode acessar os dados do token em 'decoded'
         // Por exemplo: decoded.userId, decoded.username, etc.
         // Se desejar, você pode passar os dados decodificados para o próximo middleware
-        req.user = user;
-       
+        req.user = decoded;
         next();
     });
-
-
 }
+
 
 
 export const verifyUser = (req,res,next)=>{
@@ -37,7 +38,7 @@ export const verifyUser = (req,res,next)=>{
         if(req.user.id===req.params.id || req.user.isAdmin){
 
             console.log("Passou",req.user.id)
-            
+
             next();
 
 
