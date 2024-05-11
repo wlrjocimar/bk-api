@@ -28,7 +28,7 @@ export const verifyToken = (req, res, next) => {
 };
 
 export const verifyUser = (req, res, next) => {
-  verifyToken(req, res,next, () => {
+  verifyToken(req, res, () => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       console.log("Passou", req.user.id);
 
@@ -36,14 +36,14 @@ export const verifyUser = (req, res, next) => {
     } else {
       console.log("nao passou", req.user.id);
       return next(
-        createError(403, "You are not authorized to remove this content!!")
+        createError(403, "You are not authorized to proceed with this transaction")
       );
     }
   });
 };
 
 export const verifyAdmin = (req, res, next) => {
-  verifyToken(req, res,next, () => {
+  verifyToken(req, res, () => {
     if (req.user.isAdmin) {
       next();
     } else {

@@ -13,42 +13,42 @@ const router = express.Router();
 
 // check authentication
 
-router.get("/checkauthentication",verifyToken,(req,res,next)=>{
+// router.get("/checkauthentication",verifyToken,(req,res,next)=>{
   
-  res.send("Hello user , you are authenticated!!")
+//   res.send("Hello user , you are authenticated!!")
 
-})
+// })
 
-// check user
+// // check user
 
-router.get("/checkuser/:id",verifyUser,(req,res,next)=>{
+// router.get("/checkuser/:id",verifyUser,(req,res,next)=>{
 
-  res.send("Hello user , you are authenticated and you can delete your account!!")
+//   res.send("Hello user , you are authenticated and you can delete your account!!")
 
-})
+// })
 
-// check if is admin
+// // check if is admin
 
 
-router.get("/checkadmin/:id",verifyAdmin,(req,res,next)=>{
+// router.get("/checkadmin/:id",verifyAdmin,(req,res,next)=>{
 
-  res.send("Hello user , you are authenticated as an admin user , congratulation!!")
+//   res.send("Hello user , you are authenticated as an admin user , congratulation!!")
 
-})
+// })
 
 
 
 //UPDATE
-   router.put("/:id",verifyToken,updateUser);
+   router.put("/:id",verifyUser,updateUser);
 //DELETE
-router.delete("/:id",deleteUser)
+router.delete("/:id",verifyUser,deleteUser)
 //GET
 
-router.get("/:id",getUser)
+router.get("/:id",verifyUser,getUser)
 
 //GET ALL
 
-router.get("/",getUsers)
+router.get("/",verifyAdmin,getUsers)
 
 
 export default router;
