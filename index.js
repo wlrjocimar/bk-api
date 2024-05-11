@@ -2,9 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./src/routes/auth.js";
+import userRoute from "./src/routes/users.js"
 
 import hotelsRoute from "./src/routes/hotels.js";
-
+import cookieParser from "cookie-parser";
+ 
 
 const basePath = '/bk-api';
 const app = express();
@@ -26,11 +28,12 @@ mongoose.connection.on("disconnected", () => {
 // Middleware
 
 
-
-app.use(express.json())
+app.use(cookieParser());
+app.use(express.json());
 app.use(basePath + "/auth", authRoute);
 
 app.use(basePath + "/hotels", hotelsRoute);
+app.use(basePath + "/users", userRoute)
 
 app.use((err,req,res,next)=>{
 
