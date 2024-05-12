@@ -45,7 +45,7 @@ const router = express.Router();
 router.delete("/:id",verifyUser,deleteUser)
 //GET
 
-router.get("/:id",verifyUser,getUser)
+router.get("/:hotelid",verifyUser,getUser)
 
 //GET ALL
 

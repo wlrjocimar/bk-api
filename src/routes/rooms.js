@@ -1,5 +1,6 @@
 import express from "express";
-import { createRoom, getRoom, getRooms } from "../controllers/room.js";
+import { createRoom, deleteRoom, getRoom, getRooms, updateRoom } from "../controllers/room.js";
+import { verifyUser } from "../utils/verifyToken.js";
 
 
 const router = express.Router();
@@ -17,6 +18,17 @@ router.get("/:id",getRoom)
 // GET ALL ROOMS
 
 router.get("/",getRooms)
+
+
+
+//UPDATE ROOM
+
+router.put("/:id",updateRoom);
+
+
+//DELETE ROOM
+
+router.delete("/:id",verifyUser,deleteRoom)
 
 
 
