@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 //CREATE A NEW ROOM
-router.post("/:hotelid",createRoom);
+router.post("/:hotelid",verifyUser,createRoom);
 
 
 // GET A ROOM
@@ -23,7 +23,7 @@ router.get("/",getRooms)
 
 //UPDATE ROOM
 
-router.put("/:id",updateRoom);
+router.put("/:id",verifyUser,updateRoom);
 
 
 //DELETE ROOM
