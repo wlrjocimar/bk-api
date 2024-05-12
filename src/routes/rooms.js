@@ -1,5 +1,5 @@
 import express from "express";
-import { createRoom, getRoom } from "../controllers/room.js";
+import { createRoom, getRoom, getRooms } from "../controllers/room.js";
 
 
 const router = express.Router();
@@ -12,6 +12,11 @@ router.post("/:hotelid",createRoom);
 // GET A ROOM
 
 router.get("/:id",getRoom)
+
+
+// GET ALL ROOMS
+
+router.get("/",getRooms)
 
 
 
