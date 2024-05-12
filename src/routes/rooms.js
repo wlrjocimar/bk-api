@@ -28,7 +28,7 @@ router.put("/:id",verifyUser,updateRoom);
 
 //DELETE ROOM
 
-router.delete("/:id",verifyUser,deleteRoom)
+router.delete("/:id/:hotelid",verifyUser,deleteRoom)
 
 
 

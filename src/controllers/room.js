@@ -9,6 +9,10 @@ export const createRoom = async (req, res, next) => {
   try {
     try {
       const hotel = await Hotel.findById(hotelId);
+        if(!hotel){
+            return next(createError(404, "Hotel not found for id: " + hotelId));
+        }
+
     } catch (error) {
       return next(createError(404, "Hotel not found for id: " + hotelId));
     }
