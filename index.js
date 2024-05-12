@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./src/routes/auth.js";
 import userRoute from "./src/routes/users.js"
+import roomRoute from "./src/routes/rooms.js"
 
 import hotelsRoute from "./src/routes/hotels.js";
 import cookieParser from "cookie-parser";
@@ -34,6 +35,7 @@ app.use(basePath + "/auth", authRoute);
 
 app.use(basePath + "/hotels", hotelsRoute);
 app.use(basePath + "/users", userRoute)
+app.use(basePath + "/rooms", roomRoute)
 
 app.use((err,req,res,next)=>{
 
