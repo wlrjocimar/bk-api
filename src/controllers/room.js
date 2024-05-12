@@ -69,9 +69,12 @@ export const updateRoom = async (req, res, next) => {
   export const getRoom = async (req, res, next) => {
     try {
       const room = await Room.findById(req.params.id);
+      if (!room) {
+        throw createError(404, "Object not found for id: " + req.params.id);
+      }
       res.status(200).json(room);
     } catch (err) {
-      return next(createError(404,"Object not found to id: " + req.params.id))
+      next(err);
     }
   };
   export const getRooms = async (req, res, next) => {
